@@ -3,9 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #333;
+        }
+        h1{
+            text-align: center;
+            color: whitesmoke;
+            margin: 70px 0 30px
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-self: center;
+            width: 70%;
+            margin: 0 auto;
+        }
+        .form-group {
+            width: 100%
+        }
+        .form-input{
+            font-size: larger;
+            padding: 15px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            background-color: whitesmoke;
+        }
+        #output {
+            width: 100%;
+        }
+        .cards{
+            width: 100%;
+            margin: 5px auto;
+        }
+        .card-block {
+            font-size: larger;
+            padding: 3px 15px;
+            width: 100%;
+            background-color: silver;
+            border-radius: 5px;
+            color: #333;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
     <title>Weight Convertor</title>
 </head>
 <body>
-    
+    <div class="container">
+        <h1>Weight Converter</h1>
+        <form class="form-group">
+            <input type="number" id="lbsInput" class="form-input" placeholder="Enter Pounds...">
+        </form>
+        <div id="output">
+            <div class="cards">
+                <div class="card-block">
+                    <h4>Grams:</h4>
+                    <div id="gramsOutput"></div>
+                </div>
+                <div class="card-block">
+                    <h4>Kilograms:</h4>
+                    <div id="kgOutput"></div>
+                </div>
+                <div class="card-block">
+                    <h4>Ounces:</h4>
+                    <div id="ozOutput"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        document.getElementById('output').className = 'hidden';
+        document.getElementById('lbsInput').addEventListener('input', (e) => {
+            document.getElementById('output').className = '';
+            let pounds = e.target.value;
+            document.getElementById('gramsOutput').innerHTML = pounds * 453.592;
+            document.getElementById('kgOutput').innerHTML = pounds * .453592;
+            document.getElementById('ozOutput').innerHTML = pounds * 16;
+        } )
+    </script>
 </body>
 </html>
